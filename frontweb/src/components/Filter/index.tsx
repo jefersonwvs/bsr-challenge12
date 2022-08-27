@@ -1,27 +1,37 @@
 import './styles.css';
 
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';
-import { useState } from 'react';
-import { Store } from '../../types/store';
+import { Store, FilterData } from '../../types';
+import axios from 'axios';
 
-type FilterData = {
-  store: Store | null;
+type Props = {
+  onFilterChange: (filterData: FilterData) => void;
 };
 
-function Filter() {
+function Filter(props: Props) {
   //
+  const { onFilterChange } = props;
+
   const [stores, setStores] = useState<Store[]>([]);
 
-  const { register, handleSubmit, setValue, getValues, control } =
-    useForm<FilterData>();
+  const { setValue, getValues, control } = useForm<FilterData>();
 
-  const options = [
-    { value: 1, label: 'Cidade 1' },
-    { value: 2, label: 'Cidade 2' },
-    { value: 3, label: 'Cidade 3' },
-  ];
+  useEffect(() => {
+    axios.get(`http://localhost:8080/stores`).then((response) => {
+      setStores(response.data as Store[]);
+    });
+  }, []);
+
+  const handleChangeStore = function (value: Store) {
+    setValue('store', value);
+    const filterData: FilterData = {
+      store: getValues('store'),
+    };
+    onFilterChange(filterData);
+  };
 
   return (
     <div className="filter-container">
@@ -30,8 +40,13 @@ function Filter() {
         control={control}
         render={({ field }) => (
           <Select
+            {...field}
             classNamePrefix="filter-input"
-            options={options}
+            options={stores}
+            placeholder="Loja"
+            getOptionLabel={(store: Store) => store.name}
+            getOptionValue={(store: Store) => store.id + ''}
+            onChange={(value) => handleChangeStore(value as Store)}
             isClearable
           />
         )}
