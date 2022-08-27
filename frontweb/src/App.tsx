@@ -1,7 +1,16 @@
 import './App.css';
+import Filter from './components/Filter';
+import Header from './components/Header';
 
 function App() {
-  return <h1>BDS Vendas</h1>;
+  return (
+    <>
+      <Header />
+      <main className="app-container">
+        <Filter />
+      </main>
+    </>
+  );
 }
 
 export default App;

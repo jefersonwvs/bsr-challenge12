@@ -1,0 +1,23 @@
+.app-container {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 576px) {
+  .app-container {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  .app-container {
+    padding: 40px 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app-container {
+    padding: 40px auto;
+  }
+}

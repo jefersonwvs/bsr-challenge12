@@ -1,0 +1,32 @@
+.filter-container {
+  background-color: var(--primary-color);
+  height: 130px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 40px 15px;
+  width: 100%;
+}
+
+.filter-input__control {
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--text-grey-color) !important;
+  color: var(--text-grey-color) !important;
+  height: 50px !important;
+  font-size: 16px !important;
+  width: 270px !important;
+  border-radius: 5px !important;
+}
+
+@media (min-width: 576px) {
+  .filter-container {
+    padding-left: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .filter-container {
+    width: 960px;
+  }
+}
