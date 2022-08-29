@@ -1,11 +1,29 @@
 .app-container {
   padding: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-card {
+  margin-top: 10px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 15px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 576px) {
   .app-container {
+    padding: 40px;
+  }
+
+  .main-card {
     padding: 40px;
   }
 }
@@ -13,6 +31,10 @@
 @media (min-width: 992px) {
   .app-container {
     padding: 40px 15px;
+  }
+
+  .main-card {
+    flex-direction: row;
   }
 }
 

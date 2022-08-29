@@ -1,0 +1,12 @@
+.sales-summary-value {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.sales-summary-description {
+  margin: 0;
+  color: var(--text-grey-color);
+  font-size: 18px;
+}

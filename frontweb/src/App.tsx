@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Filter from './components/Filter';
 import Header from './components/Header';
+import SalesSummary from './components/SalesSummary';
 import { FilterData } from './types';
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
       <Header />
       <main className="app-container">
         <Filter onFilterChange={onFilterChange} />
+        <div className="main-card">
+          <SalesSummary />
+          <div>GRAPH</div>
+        </div>
       </main>
     </>
   );
