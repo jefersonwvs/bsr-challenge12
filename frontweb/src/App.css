@@ -24,6 +24,7 @@
   }
 
   .main-card {
+    margin-top: 40px;
     padding: 40px;
   }
 }
@@ -41,5 +42,9 @@
 @media (min-width: 1200px) {
   .app-container {
     padding: 40px auto;
+  }
+
+  .main-card {
+    width: 960px;
   }
 }

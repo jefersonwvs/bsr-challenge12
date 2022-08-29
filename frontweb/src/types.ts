@@ -4,5 +4,9 @@ export type Store = {
 };
 
 export type FilterData = {
-  store: Store | null;
+  store?: Store;
+};
+
+export type SalesSummaryData = {
+  sum: number;
 };

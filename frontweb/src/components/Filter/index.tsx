@@ -47,7 +47,6 @@ function Filter(props: Props) {
             getOptionLabel={(store: Store) => store.name}
             getOptionValue={(store: Store) => store.id + ''}
             onChange={(value) => handleChangeStore(value as Store)}
-            isClearable
           />
         )}
       />
