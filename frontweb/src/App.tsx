@@ -3,8 +3,15 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Filter from './components/Filter';
 import Header from './components/Header';
+import PieChartCard from './components/PieChartCard';
 import SalesSummary from './components/SalesSummary';
-import { FilterData, SalesSummaryData } from './types';
+import { buildSalesByGenderChart } from './helpers';
+import {
+  FilterData,
+  PieChartData,
+  SalesByGender,
+  SalesSummaryData,
+} from './types';
 
 function App() {
   //
@@ -12,6 +19,8 @@ function App() {
   const [salesSummaryData, setSalesSummaryData] = useState<SalesSummaryData>({
     sum: 0,
   });
+  const [pieChartData, setPieChartData] = useState<PieChartData>();
+
   const onFilterChange = function (filter: FilterData) {
     setFilterData(filter);
     console.log(filterData, filter);
@@ -26,6 +35,16 @@ function App() {
         .then((response) => {
           setSalesSummaryData(response.data as SalesSummaryData);
         });
+
+      axios
+        .get(
+          `http://localhost:8080/sales/by-gender?storeId=${filterData?.store?.id}`
+        )
+        .then((response) => {
+          const salesByGender = response.data as SalesByGender[];
+          const pieChartData = buildSalesByGenderChart(salesByGender);
+          setPieChartData(pieChartData);
+        });
     }
   }, [filterData]);
 
@@ -36,7 +55,11 @@ function App() {
         <Filter onFilterChange={onFilterChange} />
         <div className="main-card">
           <SalesSummary salesSummaryData={salesSummaryData} />
-          <div>GRAPH</div>
+          <PieChartCard
+            labels={pieChartData?.labels}
+            name=""
+            series={pieChartData?.series}
+          />
         </div>
       </main>
     </>

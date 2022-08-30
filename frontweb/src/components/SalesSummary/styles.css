@@ -1,3 +1,8 @@
+.sales-summary-container {
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
 .sales-summary-value {
   margin: 0;
   color: var(--text-color);

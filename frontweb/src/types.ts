@@ -10,3 +10,15 @@ export type FilterData = {
 export type SalesSummaryData = {
   sum: number;
 };
+
+type Gender = 'FEMALE' | 'MALE' | 'OTHER';
+
+export type SalesByGender = {
+  gender: Gender;
+  sum: number;
+};
+
+export type PieChartData = {
+  labels: string[];
+  series: number[];
+};
