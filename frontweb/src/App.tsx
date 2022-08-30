@@ -1,6 +1,8 @@
+import './App.css';
+
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './App.css';
+
 import Filter from './components/Filter';
 import Header from './components/Header';
 import PieChartCard from './components/PieChartCard';
@@ -23,7 +25,6 @@ function App() {
 
   const onFilterChange = function (filter: FilterData) {
     setFilterData(filter);
-    console.log(filterData, filter);
   };
 
   useEffect(() => {

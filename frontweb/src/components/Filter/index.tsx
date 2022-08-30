@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';
-import { Store, FilterData } from '../../types';
 import axios from 'axios';
+
+import { Store, FilterData } from '../../types';
 
 type Props = {
   onFilterChange: (filterData: FilterData) => void;
